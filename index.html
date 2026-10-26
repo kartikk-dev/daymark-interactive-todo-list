@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Daymark is a simple task manager that keeps your daily tasks organized."
+  >
+  <title>Daymark | Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Daymark home">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>daymark</span>
+      </a>
+
+      <div class="header-right">
+        <span class="save-status" id="save-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Saved locally
+        </span>
+
+        <span class="avatar" aria-hidden="true">D</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">YOUR WORKSPACE</p>
+          <h1>My tasks<span class="heading-period"></span></h1>
+          <p class="page-description">
+            A little progress every day adds up.
+          </p>
+        </div>
+
+        <div class="date-card">
+          <span class="date-label">TODAY</span>
+          <time id="current-date"></time>
+        </div>
+      </section>
+
+      <section class="task-panel" aria-labelledby="task-section-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="task-section-title">Your task list</h2>
+            <p>Keep the important things moving.</p>
+          </div>
+
+          <div class="remaining-box">
+            <span class="remaining-label">REMAINING</span>
+            <strong id="remaining-count">0 tasks</strong>
+          </div>
+        </div>
+
+        <form class="task-form" id="task-form">
+          <label class="visually-hidden" for="task-input">
+            Enter a new task
+          </label>
+
+          <input
+            id="task-input"
+            name="task"
+            type="text"
+            placeholder="What needs to get done?"
+            maxlength="200"
+            autocomplete="off"
+            required
+          >
+
+          <button class="primary-button" type="submit">
+            Add task
+          </button>
+        </form>
+
+        <p class="form-feedback" id="form-feedback" aria-live="polite"></p>
+
+        <div class="task-toolbar">
+          <div
+            class="filter-group"
+            role="group"
+            aria-label="Filter tasks"
+          >
+            <button
+              class="filter-button active"
+              type="button"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+              <span id="filter-all-count">0</span>
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="active"
+              aria-pressed="false"
+            >
+              Active
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="completed"
+              aria-pressed="false"
+            >
+              Done
+            </button>
+          </div>
+
+          <button
+            class="text-button"
+            id="clear-completed"
+            type="button"
+            disabled
+          >
+            Clear completed task(s)
+          </button>
+        </div>
+
+        <div class="task-list" id="task-list" aria-live="polite"></div>
+
+        <footer class="list-footer">
+          <span id="list-summary">0 tasks</span>
+          <span>Stored on this device</span>
+        </footer>
+      </section>
+
+      <footer class="app-footer">
+        <span>DAYMARK</span>
+       
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="confirm-dialog" id="confirm-dialog">
+    <form method="dialog">
+      <h2>Clear completed tasks?</h2>
+      <p>
+        This will permanently remove all completed tasks from your saved list.
+      </p>
+
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">
+          Cancel
+        </button>
+
+        <button class="danger-button" value="confirm">
+          Clear tasks
+        </button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
